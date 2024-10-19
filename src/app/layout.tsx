@@ -1,6 +1,13 @@
 import type { Metadata } from 'next';
 
-import { gmarketSans } from '@/app/(configs)/font/config';
+import {
+  gmarketSansBold,
+  gmarketSansMedium,
+  pretendardBold,
+  pretendardMedium,
+  pretendardRegular,
+  pretendardSemiBold,
+} from '@/app/(configs)/font/config';
 import AppInitializer from '@/app/(initializer)/AppInitializer';
 import NavBar from '@/app/components/NavBar';
 
@@ -17,7 +24,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={gmarketSans.className}>
+    <html
+      lang="en"
+      className={`${gmarketSansMedium.className} ${gmarketSansBold.variable} ${pretendardRegular.variable} ${pretendardMedium.variable} ${pretendardBold.variable} ${pretendardSemiBold.variable}`}
+    >
       <body>
         <AppInitializer>
           <NavBar />
