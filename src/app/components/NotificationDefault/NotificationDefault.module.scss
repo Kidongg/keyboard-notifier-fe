@@ -1,0 +1,14 @@
+@import '@/styles/variables.scss';
+
+.box {
+  width: fit-content;
+  min-width: 44px;
+  height: 40px;
+  border-radius: 4px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  background-color: $gray-50;
+}
