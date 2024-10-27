@@ -1,6 +1,6 @@
 import classNames from 'classnames/bind';
 
-import GBitem from '@/app/components/GBitem';
+import GBItem from '@/app/components/GBItem';
 
 import styles from './GBItemList.module.scss';
 
@@ -10,7 +10,7 @@ const GBItemList = () => {
   return (
     <ul className={cx('list-container')}>
       {Array.from({ length: 20 }).map((_, index) => (
-        <GBitem key={index} />
+        <GBItem key={index} />
       ))}
     </ul>
   );
