@@ -1,0 +1,28 @@
+@import '@/styles/variables.scss';
+
+.box {
+  width: fit-content;
+  min-width: 28px;
+  height: 24px;
+  border-radius: 4px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 4px;
+  cursor: pointer;
+  background-color: $gray-50;
+  padding: 8px 10px 8px 10px;
+}
+
+.text {
+  display: none;
+  font-family: var(--font-pretendard-semi-bold);
+}
+
+.box:hover {
+  width: auto;
+
+  .text {
+    display: inline;
+  }
+}

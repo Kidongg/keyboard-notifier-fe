@@ -29,24 +29,3 @@ export const pretendardSemiBold = localFont({
   src: './PretendardSemiBold.woff',
   variable: '--font-pretendard-semi-bold',
 });
-
-// export const pretendard = localFont({
-//   src: [
-//     {
-//       path: './PretendardRegular.woff',
-//       style: 'normal',
-//     },
-//     {
-//       path: './PretendardMedium.woff',
-//       style: 'normal',
-//     },
-//     {
-//       path: './PretendardBold.woff',
-//       style: 'normal',
-//     },
-//     {
-//       path: './PretendardSemiBold.woff',
-//       style: 'normal',
-//     },
-//   ],
-// });

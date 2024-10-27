@@ -1,15 +1,16 @@
 import classNames from 'classnames/bind';
 
-import styles from './NotificationDefault.module.scss';
+import styles from './Notification.module.scss';
 
 const cx = classNames.bind(styles);
 
-const NotificationDefault = () => {
+const Notification = () => {
   return (
     <div className={cx('box')}>
+      <span className={cx('text')}>오픈 알림 신청</span>
       <img src="/assets/icons/bell.png" alt="bell" width="24px" height="24px" />
     </div>
   );
 };
 
-export default NotificationDefault;
+export default Notification;
