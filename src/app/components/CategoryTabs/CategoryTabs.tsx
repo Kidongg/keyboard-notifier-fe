@@ -35,9 +35,9 @@ const CategoryTabs = () => {
 
   return (
     <div className={cx('container')}>
-      <div className={cx('category-tabs')}>
+      <ul className={cx('category-tabs')}>
         {options.map((option, index) => (
-          <div
+          <li
             key={option.label}
             className={cx('tab', {
               selected: option.selected,
@@ -45,9 +45,9 @@ const CategoryTabs = () => {
             onClick={() => handleSelect(index)}
           >
             <span>{option.label}</span>
-          </div>
+          </li>
         ))}
-      </div>
+      </ul>
     </div>
   );
 };
