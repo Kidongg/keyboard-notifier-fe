@@ -1,9 +1,10 @@
-@import '@/styles/variables.scss';
-
 .container {
   position: relative;
   width: fit-content;
   height: 24px;
+  position: absolute;
+  bottom: 35px;
+  right: 20px;
 }
 
 .box {
@@ -15,9 +16,11 @@
   align-items: center;
   gap: 4px;
   cursor: pointer;
-  background-color: $gray-50;
+  background-color: transparent;
   padding: 8px 10px 8px 10px;
-  transition: width 0.3s ease;
+  transition:
+    width 0.3s ease,
+    background-color 0.3s ease;
 }
 
 .text {
@@ -29,6 +32,7 @@
 .box:hover {
   width: auto;
   justify-content: flex-start;
+  background-color: var(--Color-Dimmed_Hover, #ffffff33);
 
   .text {
     display: inline;
