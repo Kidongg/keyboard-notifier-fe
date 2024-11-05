@@ -1,6 +1,7 @@
 import classNames from 'classnames/bind';
 
 import Chip from '@/app/components/Chip';
+import Notification from '@/app/components/Notification';
 
 import styles from './GBItem.module.scss';
 
@@ -17,6 +18,7 @@ const GBItem = () => {
         <p className={cx('price')}>68,000 원</p>
         <p className={cx('date')}>2021.01 - 2024.07</p>
       </div>
+      <Notification />
     </li>
   );
 };

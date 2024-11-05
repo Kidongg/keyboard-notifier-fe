@@ -36,6 +36,7 @@
   justify-content: space-between;
   padding: 16px 24px 16px 24px;
   display: none; /* 기본적으로 숨김 */
+  z-index: 1;
 
   &.show {
     display: block;
