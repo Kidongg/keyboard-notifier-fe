@@ -1,3 +1,54 @@
 .container {
   width: 50%;
+  font-family: var(--font-pretendard-medium);
+  display: flex;
+  flex-direction: column;
+}
+
+.badges {
+  display: flex;
+  gap: 6px;
+}
+
+.texts {
+  margin-top: 20px;
+}
+
+.title {
+  font-size: 28px;
+  line-height: 33.6px;
+  letter-spacing: -1.5%;
+}
+
+.price {
+  margin-top: 12px;
+  display: flex;
+  gap: 4px;
+  align-items: center;
+}
+
+.value {
+  font-family: var(--font-gmarket-sans-bold);
+  font-size: 40px;
+  line-height: 56px;
+  color: #54f451;
+  letter-spacing: 2%;
+}
+
+.currency {
+  font-size: 28px;
+  line-height: 33.6px;
+  letter-spacing: -1.5%;
+}
+
+.period {
+  margin-top: 7px;
+  font-family: var(--font-pretendard-regular);
+  font-size: 18px;
+  line-height: 21.6px;
+  letter-spacing: -1%;
+}
+
+.buttons {
+  margin-top: 56px;
 }
