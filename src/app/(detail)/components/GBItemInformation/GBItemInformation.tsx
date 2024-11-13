@@ -1,6 +1,7 @@
 import classNames from 'classnames/bind';
 
 import Badge from '@/app/(detail)/components/Badge/Badge';
+import NavigateToProductPageButton from '@/app/(detail)/components/NavigateToProductPageButton';
 import NotificationSubscribeButton from '@/app/(detail)/components/NotificationSubscribeButton';
 
 import styles from './GBItemInformation.module.scss';
@@ -24,7 +25,7 @@ const GBItemInformation = () => {
       </div>
       <div className={cx('buttons')}>
         <NotificationSubscribeButton />
-        <button>해당상품 보러가기</button>
+        <NavigateToProductPageButton />
       </div>
     </section>
   );
