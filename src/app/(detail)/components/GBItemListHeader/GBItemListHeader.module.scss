@@ -1,0 +1,26 @@
+.container {
+  min-width: 1128px;
+  height: 28px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.title {
+  font-family: var(--font-gmarket-sans-bold);
+  font-size: 20px;
+  line-height: 28px;
+}
+
+.more-button {
+  border: none;
+  background-color: transparent;
+  color: white;
+  padding: 4px 4px 4px 6px;
+  display: flex;
+  gap: 4px;
+  cursor: pointer;
+  font-family: var(--font-pretendard-semi-bold);
+  font-size: 14px;
+  line-height: 16.8px;
+}
