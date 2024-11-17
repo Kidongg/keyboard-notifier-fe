@@ -23,11 +23,11 @@ const GBItemCarousel = () => {
   return (
     <section className={cx('container')}>
       <Slider {...settings}>
-        <img className={cx('image')} src="/assets/images/gb-thumbnail.png" alt="image" width="100%" height="520px" />
-        <img className={cx('image')} src="/assets/images/gb-thumbnail.png" alt="image" width="100%" height="520px" />
-        <img className={cx('image')} src="/assets/images/gb-thumbnail.png" alt="image" width="100%" height="520px" />
-        <img className={cx('image')} src="/assets/images/gb-thumbnail.png" alt="image" width="100%" height="520px" />
-        <img className={cx('image')} src="/assets/images/gb-thumbnail.png" alt="image" width="100%" height="520px" />
+        <img className={cx('image')} src="/assets/images/gb-thumbnail.png" alt="image" width="584px" height="520px" />
+        <img className={cx('image')} src="/assets/images/gb-thumbnail.png" alt="image" width="584px" height="520px" />
+        <img className={cx('image')} src="/assets/images/gb-thumbnail.png" alt="image" width="584px" height="520px" />
+        <img className={cx('image')} src="/assets/images/gb-thumbnail.png" alt="image" width="584px" height="520px" />
+        <img className={cx('image')} src="/assets/images/gb-thumbnail.png" alt="image" width="584px" height="520px" />
       </Slider>
     </section>
   );
