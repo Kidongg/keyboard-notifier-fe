@@ -9,6 +9,7 @@ import {
   pretendardSemiBold,
 } from '@/app/(configs)/font/config';
 import AppInitializer from '@/app/(initializer)/AppInitializer';
+import Footer from '@/app/components/Footer';
 import NavBar from '@/app/components/NavBar';
 
 import '@/styles/index.scss';
@@ -32,6 +33,7 @@ export default function RootLayout({
         <AppInitializer>
           <NavBar />
           {children}
+          <Footer />
         </AppInitializer>
       </body>
     </html>
