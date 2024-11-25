@@ -2,7 +2,7 @@ import classNames from 'classnames/bind';
 
 import Badge from '@/app/(detail)/components/Badge/Badge';
 
-import styles from './GBItem.module.scss';
+import styles from './GBitem.module.scss';
 
 const cx = classNames.bind(styles);
 
