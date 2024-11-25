@@ -1,1 +1,1 @@
-export { default } from './GBItem';
+export { default } from './GBitem';
