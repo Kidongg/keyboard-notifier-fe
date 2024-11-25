@@ -3,7 +3,7 @@ import classNames from 'classnames/bind';
 import Chip from '@/app/components/Chip';
 import Notification from '@/app/components/Notification';
 
-import styles from './GBItem.module.scss';
+import styles from './GBitem.module.scss';
 
 const cx = classNames.bind(styles);
 
