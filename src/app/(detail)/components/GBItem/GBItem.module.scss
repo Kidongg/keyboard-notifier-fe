@@ -11,29 +11,45 @@
   flex-direction: column;
   cursor: pointer;
   position: relative;
+  justify-content: space-between;
 }
 
-.chip-wrap {
-  flex: 1;
+.badge-wrap {
+  display: flex;
+  gap: 6px;
+}
+
+.content-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
 }
 
 .title {
   font-size: 14px;
-  font-weight: 500;
-  line-height: 120%;
-  margin-bottom: 12px;
   line-height: 16.8px;
+  margin-bottom: 12px;
 }
 
 .price {
+  display: flex;
+  gap: 4px;
+}
+
+.value {
+  font-family: var(--font-gmarket-sans-bold);
   font-size: 20px;
-  font-weight: 700;
-  color: $green-50;
-  margin-bottom: 7px;
   line-height: 28px;
+  color: $green-50;
+}
+
+.currency {
+  font-size: 18px;
+  line-height: 33.6px;
 }
 
 .date {
+  font-family: var(--font-pretendard-semi-bold);
   font-size: 12px;
-  font-weight: 600;
+  line-height: 14.4px;
 }

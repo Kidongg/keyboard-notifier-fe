@@ -1,0 +1,26 @@
+.footer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px 0 56px 0;
+}
+
+.container {
+  display: flex;
+  gap: 20px;
+}
+
+.service-name {
+  font-size: 14px;
+  line-height: 16.8px;
+}
+
+.channel {
+  font-family: var(--font-gmarket-sans-bold);
+  font-size: 14px;
+  line-height: 16.8px;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  cursor: pointer;
+}
