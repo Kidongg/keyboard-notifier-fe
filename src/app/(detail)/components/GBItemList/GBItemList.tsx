@@ -1,6 +1,6 @@
 import classNames from 'classnames/bind';
 
-import GBItem from '@/app/(detail)/components/GBitem/GBitem';
+import GBItem from '@/app/(detail)/components/GBItem';
 
 import styles from './GBItemList.module.scss';
 
