@@ -1,4 +1,4 @@
-import React, { ReactNode } from 'react';
+import React from 'react';
 import ReactDOM from 'react-dom';
 
 import classNames from 'classnames/bind';
@@ -6,13 +6,11 @@ import classNames from 'classnames/bind';
 import GroupBuyNotificationSubscribeModal from '@/app/(detail)/modals/GroupBuyNotificationSubscribeModal';
 import { useModalStore } from '@/app/store/modalStore';
 
-import styles from './ModalProvider.module.scss';
+import styles from './ModalManager.module.scss';
 
 const cx = classNames.bind(styles);
 
-type Props = { children: ReactNode };
-
-const ModalProvider: React.FC<Props> = ({ children }) => {
+const ModalManager = () => {
   const { isOpen, modalType, modalProps, closeModal } = useModalStore();
 
   const renderModal = () => {
@@ -26,7 +24,6 @@ const ModalProvider: React.FC<Props> = ({ children }) => {
 
   return (
     <React.Fragment>
-      {children}
       {isOpen &&
         ReactDOM.createPortal(
           <div className={cx('modal-backdrop')} onClick={closeModal} aria-hidden="true">
@@ -38,4 +35,4 @@ const ModalProvider: React.FC<Props> = ({ children }) => {
   );
 };
 
-export default ModalProvider;
+export default ModalManager;
