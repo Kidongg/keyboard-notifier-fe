@@ -1,3 +1,4 @@
+'use client';
 import classNames from 'classnames/bind';
 
 import CategoryTabs from '@/app/components/CategoryTabs';
