@@ -5,7 +5,7 @@ import { ProductsRes } from '@/app/types/api/product';
 
 const getProductsQueryKey = () => ['products'];
 
-export const getProductsClientQueryObject = () => {
+export const getProductsQueryObject = () => {
   return {
     queryKey: getProductsQueryKey(),
     queryFn: async (): Promise<ProductsRes> => await ky.get(SOKEY_API_URL.PRODUCTS).json(),

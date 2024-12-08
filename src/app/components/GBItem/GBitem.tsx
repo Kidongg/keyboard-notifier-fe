@@ -1,10 +1,11 @@
 import classNames from 'classnames/bind';
 
+import ProductCategoryTypeChip from '@/app/(detail)/components/ProductCategoryTypeChip';
 import { formatDate } from '@/app/(shared)/utils/date';
 import { formatPrice } from '@/app/(shared)/utils/price';
 import Notification from '@/app/components/Notification';
 import ProductStatusChip from '@/app/components/ProductStatusChip';
-import { ProductStatusType } from '@/app/types/api/product';
+import { ProductCategoryType, ProductStatusType } from '@/app/types/api/product';
 
 import styles from './GBitem.module.scss';
 
@@ -19,9 +20,10 @@ type GBItemProps = {
   imageUrl: string[];
   productUrl: string;
   status: ProductStatusType;
+  categoryType: ProductCategoryType;
 };
 
-const GBItem = ({ name, price, unit, startDate, endDate, imageUrl, productUrl, status }: GBItemProps) => {
+const GBItem = ({ name, price, unit, startDate, endDate, imageUrl, productUrl, status, categoryType }: GBItemProps) => {
   const moveToDetailPage = () => {
     window.open(productUrl, '_blank', 'noopener noreferrer');
   };
@@ -37,6 +39,7 @@ const GBItem = ({ name, price, unit, startDate, endDate, imageUrl, productUrl, s
     >
       <div className={cx('chip-wrap')}>
         <ProductStatusChip status={status} />
+        <ProductCategoryTypeChip categoryType={categoryType} />
       </div>
       <div>
         <h3 className={cx('name')}>{name}</h3>

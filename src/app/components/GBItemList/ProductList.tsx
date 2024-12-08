@@ -1,15 +1,16 @@
-import { useQuery } from '@tanstack/react-query';
+'use client';
+import { useSuspenseQuery } from '@tanstack/react-query';
 import classNames from 'classnames/bind';
 
-import { getProductsClientQueryObject } from '@/app/(queries)/productsQueries';
+import { getProductsQueryObject } from '@/app/(queries)/productsQueries';
 import GBItem from '@/app/components/GBItem';
 
-import styles from './GBItemList.module.scss';
+import styles from './ProductList.module.scss';
 
 const cx = classNames.bind(styles);
 
-const GBItemList = () => {
-  const { data } = useQuery(getProductsClientQueryObject());
+const ProductList = () => {
+  const { data } = useSuspenseQuery(getProductsQueryObject());
 
   if (!data) {
     return null;
@@ -28,10 +29,11 @@ const GBItemList = () => {
           imageUrl={product.imageUrl}
           productUrl={product.productUrl}
           status={product.productStatus}
+          categoryType={product.productType}
         />
       ))}
     </ul>
   );
 };
 
-export default GBItemList;
+export default ProductList;

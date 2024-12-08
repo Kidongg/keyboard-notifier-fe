@@ -1,5 +1,6 @@
 import classNames from 'classnames/bind';
 
+import { PRODUCT_STATUS_NAME } from '@/app/(shared)/constants';
 import { ProductStatusEnum, ProductStatusType } from '@/app/types/api/product';
 
 import styles from './ProductStatusChip.module.scss';
@@ -10,12 +11,6 @@ type ProductStatusChipProps = {
   status: ProductStatusType;
 };
 
-const PRODUCT_STATUS_LABEL = {
-  [ProductStatusEnum.NOT_YET]: '진행예정',
-  [ProductStatusEnum.IN_PROGRESS]: '진행중',
-  [ProductStatusEnum.DONE]: '공제완료',
-};
-
 const ProductStatusChip = ({ status }: ProductStatusChipProps) => {
   return (
     <span
@@ -24,7 +19,7 @@ const ProductStatusChip = ({ status }: ProductStatusChipProps) => {
         'in-progress': status === ProductStatusEnum.IN_PROGRESS,
       })}
     >
-      {PRODUCT_STATUS_LABEL[status]}
+      {PRODUCT_STATUS_NAME[status]}
     </span>
   );
 };
