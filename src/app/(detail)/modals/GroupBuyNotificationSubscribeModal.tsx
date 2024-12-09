@@ -31,10 +31,27 @@ const GroupBuyNotificationSubscribeModal = () => {
     phoneInputRef.current?.focus();
   };
 
+  // 연락처 체크박스 해제
+  const onClickEnabledPhoneCheckbox = () => {
+    setCheckedPhone(false);
+    if (phoneInputRef.current) {
+      setPhoneNumber('');
+      phoneInputRef.current.value = '';
+    }
+  };
+
   // 이메일 체크박스 클릭
   const onClickDisabledEmailCheckbox = () => {
     setCheckedEmail(true);
     emailInputRef.current?.focus();
+  };
+
+  // 이메일 체크박스 해제
+  const onClickEnabledEmailCheckbox = () => {
+    setCheckedEmail(false);
+    if (emailInputRef.current) {
+      emailInputRef.current.value = '';
+    }
   };
 
   // 연락처 입력시 데이터 변환시키기
@@ -60,7 +77,7 @@ const GroupBuyNotificationSubscribeModal = () => {
             {checkedPhone ? (
               <img
                 className={cx('check')}
-                onClick={() => setCheckedPhone(false)}
+                onClick={onClickEnabledPhoneCheckbox}
                 src="/assets/icons/checkbox-enabled.png"
                 alt="checkbox-enabled"
                 width="24px"
@@ -94,7 +111,7 @@ const GroupBuyNotificationSubscribeModal = () => {
             {checkedEmail ? (
               <img
                 className={cx('check')}
-                onClick={() => setCheckedEmail(false)}
+                onClick={onClickEnabledEmailCheckbox}
                 src="/assets/icons/checkbox-enabled.png"
                 alt="checkbox-enabled"
                 width="24px"
