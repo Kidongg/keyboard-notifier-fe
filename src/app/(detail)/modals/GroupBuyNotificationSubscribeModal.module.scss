@@ -65,11 +65,8 @@
   align-items: center;
 }
 
-.check-disabled {
+.check {
   cursor: pointer;
-}
-
-.check-enabled {
 }
 
 .label {
@@ -86,9 +83,11 @@
   font-family: var(--font-pretendard-regular);
   font-size: 18px;
   line-height: 21.6px;
-  color: $gray-40;
+
   outline: none;
   border: none;
+
+  color: white;
 }
 
 .modal-footer {
@@ -109,8 +108,33 @@
   font-family: var(--font-pretendard-semi-bold);
   font-size: 14px;
   line-height: 16.8px;
-  color: $gray-40;
+  color: $gray-50;
 
   outline: none;
   border: none;
+
+  &:disabled {
+    pointer-events: none;
+  }
+}
+
+.button-enabled {
+  width: 125px;
+  height: 40px;
+  border-radius: 4px;
+  padding: 10px 8px 10px 12px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: $gray-50;
+
+  font-family: var(--font-pretendard-semi-bold);
+  font-size: 14px;
+  line-height: 16.8px;
+  color: white;
+
+  outline: none;
+  border: none;
+
+  cursor: pointer;
 }
