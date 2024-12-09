@@ -2,6 +2,7 @@ import { useRef, useState } from 'react';
 
 import classNames from 'classnames/bind';
 
+import { formatPhoneNumber } from '@/app/(shared)/utils/formatPhoneNumber';
 import { useModalStore } from '@/app/store/modalStore';
 
 import styles from './GroupBuyNotificationSubscribeModal.module.scss';
@@ -9,6 +10,8 @@ import styles from './GroupBuyNotificationSubscribeModal.module.scss';
 const cx = classNames.bind(styles);
 
 const GroupBuyNotificationSubscribeModal = () => {
+  const [phoneNumber, setPhoneNumber] = useState('');
+
   const [checkedPhone, setCheckedPhone] = useState(false);
   const [checkedEmail, setCheckedEmail] = useState(false);
 
@@ -32,6 +35,12 @@ const GroupBuyNotificationSubscribeModal = () => {
   const onClickDisabledEmailCheckbox = () => {
     setCheckedEmail(true);
     emailInputRef.current?.focus();
+  };
+
+  // 연락처 입력시 데이터 변환시키기
+  const handleChangePhoneNumber = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const formattedNumber = formatPhoneNumber(e.target.value);
+    setPhoneNumber(formattedNumber);
   };
 
   return (
@@ -73,6 +82,9 @@ const GroupBuyNotificationSubscribeModal = () => {
             className={cx('input')}
             ref={phoneInputRef}
             onFocus={() => setCheckedPhone(true)}
+            value={phoneNumber}
+            onChange={handleChangePhoneNumber}
+            maxLength={13}
             placeholder="010-1234-5678"
             type="tel"
           />
