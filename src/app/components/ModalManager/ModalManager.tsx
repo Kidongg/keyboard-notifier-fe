@@ -4,6 +4,7 @@ import ReactDOM from 'react-dom';
 import classNames from 'classnames/bind';
 
 import GroupBuyNotificationSubscribeModal from '@/app/(detail)/modals/GroupBuyNotificationSubscribeModal';
+import SuccessNotificationAlertModal from '@/app/(detail)/modals/SuccessNotificationAlertModal';
 import { useModalStore } from '@/app/store/modalStore';
 
 import styles from './ModalManager.module.scss';
@@ -17,6 +18,8 @@ const ModalManager = () => {
     switch (modalType) {
       case 'GroupBuyNotificationSubscribeModal':
         return <GroupBuyNotificationSubscribeModal {...modalProps} />;
+      case 'SuccessNotificationAlertModal':
+        return <SuccessNotificationAlertModal {...modalProps} />;
       default:
         return null;
     }
