@@ -18,7 +18,7 @@ const GroupBuyNotificationSubscribeModal = () => {
   const phoneInputRef = useRef<HTMLInputElement | null>(null);
   const emailInputRef = useRef<HTMLInputElement | null>(null);
 
-  const { closeModal } = useModalStore();
+  const { openModal, closeModal } = useModalStore();
 
   // 오픈 알림 신청 모달 닫기
   const onClickCloseNotificationSubscribeModal = () => {
@@ -58,6 +58,11 @@ const GroupBuyNotificationSubscribeModal = () => {
   const handleChangePhoneNumber = (e: React.ChangeEvent<HTMLInputElement>) => {
     const formattedNumber = formatPhoneNumber(e.target.value);
     setPhoneNumber(formattedNumber);
+  };
+
+  // 알림 신청 버튼 클릭
+  const onClickNotificationRequest = () => {
+    openModal('SuccessNotificationAlertModal');
   };
 
   return (
@@ -139,7 +144,11 @@ const GroupBuyNotificationSubscribeModal = () => {
         </div>
       </div>
       <div className={cx('modal-footer')}>
-        <button className={cx(checkedPhone || checkedEmail ? 'button-enabled' : 'button-disabled')}>
+        <button
+          className={cx(checkedPhone || checkedEmail ? 'button-enabled' : 'button-disabled')}
+          disabled={!checkedPhone && !checkedEmail}
+          onClick={onClickNotificationRequest}
+        >
           알림 신청 완료
         </button>
       </div>
