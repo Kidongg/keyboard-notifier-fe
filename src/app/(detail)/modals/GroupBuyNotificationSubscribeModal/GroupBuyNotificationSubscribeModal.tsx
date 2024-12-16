@@ -1,7 +1,8 @@
-import { useRef, useState } from 'react';
+import { useRef } from 'react';
 
 import classNames from 'classnames/bind';
 
+import useGroupByNotificationSubscribeModal from '@/app/(detail)/hooks/useGroupByNotificationSubscribeModal';
 import { formatPhoneNumber } from '@/app/(shared)/utils/formatPhoneNumber';
 import { useModalStore } from '@/app/store/modalStore';
 
@@ -10,10 +11,8 @@ import styles from './GroupBuyNotificationSubscribeModal.module.scss';
 const cx = classNames.bind(styles);
 
 const GroupBuyNotificationSubscribeModal = () => {
-  const [phoneNumber, setPhoneNumber] = useState('');
-
-  const [checkedPhone, setCheckedPhone] = useState(false);
-  const [checkedEmail, setCheckedEmail] = useState(false);
+  const { phoneNumber, setPhoneNumber, checkedPhone, setCheckedPhone, checkedEmail, setCheckedEmail } =
+    useGroupByNotificationSubscribeModal();
 
   const phoneInputRef = useRef<HTMLInputElement | null>(null);
   const emailInputRef = useRef<HTMLInputElement | null>(null);
