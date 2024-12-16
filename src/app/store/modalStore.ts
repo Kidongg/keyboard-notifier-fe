@@ -1,12 +1,14 @@
 import { create } from 'zustand';
 
+type ModalType = 'group-buy-notification-subscribe-modal' | 'success-notification-alert-modal';
+
 type ModalProps = Record<string, any>;
 
 type ModalState = {
   isOpen: boolean;
-  modalType: string | null;
+  modalType: ModalType | null;
   modalProps: ModalProps;
-  openModal: (type: string, props?: ModalProps) => void;
+  openModal: (type: ModalType, props?: ModalProps) => void;
   closeModal: () => void;
 };
 
