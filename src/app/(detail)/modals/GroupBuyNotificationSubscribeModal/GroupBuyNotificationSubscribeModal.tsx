@@ -2,6 +2,7 @@ import { useRef } from 'react';
 
 import classNames from 'classnames/bind';
 
+import CheckBox from '@/app/(detail)/components/CheckBox';
 import useGroupByNotificationSubscribeModal from '@/app/(detail)/hooks/useGroupByNotificationSubscribeModal';
 import { formatPhoneNumber } from '@/app/(shared)/utils/formatPhoneNumber';
 import { useModalStore } from '@/app/store/modalStore';
@@ -11,46 +12,27 @@ import styles from './GroupBuyNotificationSubscribeModal.module.scss';
 const cx = classNames.bind(styles);
 
 const GroupBuyNotificationSubscribeModal = () => {
-  const { phoneNumber, setPhoneNumber, checkedPhone, setCheckedPhone, checkedEmail, setCheckedEmail } =
-    useGroupByNotificationSubscribeModal();
-
   const phoneInputRef = useRef<HTMLInputElement | null>(null);
   const emailInputRef = useRef<HTMLInputElement | null>(null);
+
+  const {
+    phoneNumber,
+    setPhoneNumber,
+    checkedPhone,
+    setCheckedPhone,
+    onClickEnabledPhoneCheckbox,
+    onClickDisabledPhoneCheckbox,
+    checkedEmail,
+    setCheckedEmail,
+    onClickEnabledEmailCheckbox,
+    onClickDisabledEmailCheckbox,
+  } = useGroupByNotificationSubscribeModal(phoneInputRef, emailInputRef);
 
   const { openModal, closeModal } = useModalStore();
 
   // 오픈 알림 신청 모달 닫기
   const onClickCloseNotificationSubscribeModal = () => {
     closeModal();
-  };
-
-  // 연락처 체크박스 클릭
-  const onClickDisabledPhoneCheckbox = () => {
-    setCheckedPhone(true);
-    phoneInputRef.current?.focus();
-  };
-
-  // 연락처 체크박스 해제
-  const onClickEnabledPhoneCheckbox = () => {
-    setCheckedPhone(false);
-    if (phoneInputRef.current) {
-      setPhoneNumber('');
-      phoneInputRef.current.value = '';
-    }
-  };
-
-  // 이메일 체크박스 클릭
-  const onClickDisabledEmailCheckbox = () => {
-    setCheckedEmail(true);
-    emailInputRef.current?.focus();
-  };
-
-  // 이메일 체크박스 해제
-  const onClickEnabledEmailCheckbox = () => {
-    setCheckedEmail(false);
-    if (emailInputRef.current) {
-      emailInputRef.current.value = '';
-    }
   };
 
   // 연락처 입력시 데이터 변환시키기
@@ -78,25 +60,11 @@ const GroupBuyNotificationSubscribeModal = () => {
       <div className={cx('modal-content')}>
         <div className={cx('content-box')}>
           <div className={cx('label-box')}>
-            {checkedPhone ? (
-              <img
-                className={cx('check')}
-                onClick={onClickEnabledPhoneCheckbox}
-                src="/assets/icons/checkbox-enabled.png"
-                alt="checkbox-enabled"
-                width="24px"
-                height="24px"
-              />
-            ) : (
-              <img
-                className={cx('check')}
-                onClick={onClickDisabledPhoneCheckbox}
-                src="/assets/icons/checkbox-disabled.png"
-                alt="checkbox-disabled"
-                width="24px"
-                height="24px"
-              />
-            )}
+            <CheckBox
+              checked={checkedPhone}
+              onClick={checkedPhone ? onClickEnabledPhoneCheckbox : onClickDisabledPhoneCheckbox}
+              alt="checkbox-phone"
+            />
             <label className={cx('label')}>연락처</label>
           </div>
           <input
@@ -112,25 +80,11 @@ const GroupBuyNotificationSubscribeModal = () => {
         </div>
         <div className={cx('content-box')}>
           <div className={cx('label-box')}>
-            {checkedEmail ? (
-              <img
-                className={cx('check')}
-                onClick={onClickEnabledEmailCheckbox}
-                src="/assets/icons/checkbox-enabled.png"
-                alt="checkbox-enabled"
-                width="24px"
-                height="24px"
-              />
-            ) : (
-              <img
-                className={cx('check')}
-                onClick={onClickDisabledEmailCheckbox}
-                src="/assets/icons/checkbox-disabled.png"
-                alt="checkbox-disabled"
-                width="24px"
-                height="24px"
-              />
-            )}
+            <CheckBox
+              checked={checkedEmail}
+              onClick={checkedEmail ? onClickEnabledEmailCheckbox : onClickDisabledEmailCheckbox}
+              alt="checkbox-email"
+            />
             <label className={cx('label')}>이메일</label>
           </div>
           <input
