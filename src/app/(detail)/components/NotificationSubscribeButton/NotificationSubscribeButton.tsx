@@ -13,7 +13,7 @@ const NotificationSubscribeButton = () => {
 
   // 오픈 알림 신청 모달 열기
   const onClickOpenNotificationSubscribeModal = () => {
-    openModal('GroupBuyNotificationSubscribeModal');
+    openModal('group-buy-notification-subscribe-modal');
   };
 
   return (

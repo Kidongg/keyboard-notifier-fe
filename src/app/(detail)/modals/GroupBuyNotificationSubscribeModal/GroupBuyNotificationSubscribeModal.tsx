@@ -43,7 +43,7 @@ const GroupBuyNotificationSubscribeModal = () => {
 
   // 알림 신청 버튼 클릭
   const onClickNotificationRequest = () => {
-    openModal('SuccessNotificationAlertModal');
+    openModal('success-notification-alert-modal');
   };
 
   return (

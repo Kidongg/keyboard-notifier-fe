@@ -16,9 +16,9 @@ const ModalManager = () => {
 
   const renderModal = () => {
     switch (modalType) {
-      case 'GroupBuyNotificationSubscribeModal':
+      case 'group-buy-notification-subscribe-modal':
         return <GroupBuyNotificationSubscribeModal {...modalProps} />;
-      case 'SuccessNotificationAlertModal':
+      case 'success-notification-alert-modal':
         return <SuccessNotificationAlertModal {...modalProps} />;
       default:
         return null;
