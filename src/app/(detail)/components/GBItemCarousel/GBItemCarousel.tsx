@@ -14,7 +14,14 @@ const GBItemCarousel = () => {
     arrows: false,
     dots: true,
     appendDots: (dots: React.ReactNode) => (
-      <div style={{ position: 'absolute', bottom: '20px', left: '50%', transform: 'translateX(-50%)', zIndex: 1 }}>
+      <div
+        style={{
+          bottom: '20px',
+          left: '50%',
+          transform: 'translateX(-50%)',
+          width: '50%',
+        }}
+      >
         <ul style={{ margin: '0px' }}> {dots} </ul>
       </div>
     ),
