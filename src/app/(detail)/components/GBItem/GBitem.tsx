@@ -1,6 +1,7 @@
 import classNames from 'classnames/bind';
 
-import Badge from '@/app/(detail)/components/Badge/Badge';
+import ProductStatusChip from '@/app/(detail)/components/GBItemStatusChip/ProductStatusChip';
+import ProductCategoryTypeChip from '@/app/(detail)/components/ProductCategoryTypeChip';
 
 import styles from './GBitem.module.scss';
 
@@ -10,8 +11,8 @@ const GBItem = () => {
   return (
     <li className={cx('list')} role="button">
       <div className={cx('badge-wrap')}>
-        <Badge text="진행예정" type="status" />
-        <Badge text="키보드" type="category" />
+        <ProductStatusChip status="IN_PROGRESS" />
+        <ProductCategoryTypeChip categoryType="KEYBOARD" />
       </div>
       <div className={cx('content-wrap')}>
         <div className={cx('title')}>[GB] GMK Rubrehose Artisanchoke Idkw...</div>
