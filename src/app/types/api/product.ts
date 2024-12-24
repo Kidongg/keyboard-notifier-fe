@@ -30,6 +30,7 @@ export type Product = {
   productUrl: string;
   startDate: string;
   unit: string;
+  id: number;
 };
 
 export type ProductsRes = {
@@ -39,4 +40,8 @@ export type ProductsRes = {
     size: number;
     totalCount: number;
   };
+};
+
+export type ProductsDetailRes = {
+  data: Product;
 };
