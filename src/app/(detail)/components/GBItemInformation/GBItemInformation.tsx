@@ -1,31 +1,59 @@
+import Link from 'next/link';
+
 import classNames from 'classnames/bind';
 
-import Badge from '@/app/(detail)/components/Badge/Badge';
+import ProductStatusChip from '@/app/(detail)/components/GBItemStatusChip/ProductStatusChip';
 import NavigateToProductPageButton from '@/app/(detail)/components/NavigateToProductPageButton';
 import NotificationSubscribeButton from '@/app/(detail)/components/NotificationSubscribeButton';
+import ProductCategoryTypeChip from '@/app/(detail)/components/ProductCategoryTypeChip';
+import { formatDate } from '@/app/(shared)/utils/date';
+import { formatPrice } from '@/app/(shared)/utils/price';
+import { ProductCategoryType, ProductStatusType } from '@/app/types/api/product';
 
 import styles from './GBItemInformation.module.scss';
 
 const cx = classNames.bind(styles);
 
-const GBItemInformation = () => {
+type GBItemInformationProps = {
+  status: ProductStatusType;
+  categoryType: ProductCategoryType;
+  name: string;
+  price: number;
+  unit: string;
+  startDate: string;
+  endDate: string;
+  productUrl: string;
+};
+
+const GBItemInformation = ({
+  status,
+  categoryType,
+  name,
+  price,
+  unit,
+  startDate,
+  endDate,
+  productUrl,
+}: GBItemInformationProps) => {
   return (
     <section className={cx('container')}>
       <div className={cx('badges')}>
-        <Badge text="진행예정" type="status" />
-        <Badge text="키보드" type="category" />
+        <ProductStatusChip status={status} />
+        <ProductCategoryTypeChip categoryType={categoryType} />
       </div>
       <div className={cx('texts')}>
-        <p className={cx('title')}>[GB] GMK Rubrehose Artisanchoke</p>
+        <p className={cx('title')}>{name}</p>
         <p className={cx('price')}>
-          <span className={cx('value')}>68,000</span>
-          <span className={cx('currency')}>원</span>
+          <span className={cx('value')}>{formatPrice(price, '')}</span>
+          <span className={cx('currency')}>{unit}</span>
         </p>
-        <p className={cx('period')}>2024.01 - 2024.07</p>
+        <p className={cx('period')}>{`${formatDate(startDate)} - ${formatDate(endDate)}`}</p>
       </div>
       <div className={cx('buttons')}>
         <NotificationSubscribeButton />
-        <NavigateToProductPageButton />
+        <Link href={productUrl} target="_blank">
+          <NavigateToProductPageButton />
+        </Link>
       </div>
     </section>
   );
