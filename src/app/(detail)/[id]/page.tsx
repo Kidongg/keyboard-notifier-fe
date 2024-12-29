@@ -1,8 +1,8 @@
 import classNames from 'classnames/bind';
 
 import Divider from '@/app/(detail)/components/Divider';
-import GBItemGallery from '@/app/(detail)/components/GBItemGallery';
 import ProductDetailContainer from '@/app/(detail)/containers/ProductDetailContainer';
+import ProductSimilarListContainer from '@/app/(detail)/containers/ProductSimilarListContainer';
 
 import styles from './page.module.scss';
 
@@ -13,7 +13,7 @@ export default function Page({ params }: { params: { id: string } }) {
     <main className={cx('main')}>
       <ProductDetailContainer productId={params.id} />
       <Divider />
-      <GBItemGallery />
+      <ProductSimilarListContainer productId={params.id} />
     </main>
   );
 }

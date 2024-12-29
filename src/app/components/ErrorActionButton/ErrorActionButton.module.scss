@@ -1,0 +1,16 @@
+@import '@/styles/variables.scss';
+
+.button {
+  width: 88px;
+  height: 40px;
+  border-radius: 4px;
+  background-color: $gray-50;
+  color: white;
+  font-family: var(--font-pretendard-semi-bold);
+  font-size: 14px;
+  line-height: 16.8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
