@@ -1,5 +1,5 @@
 'use client';
-import { useSuspenseQuery } from '@tanstack/react-query';
+import { useQuery } from '@tanstack/react-query';
 import classNames from 'classnames/bind';
 
 import { getProductsQueryObject } from '@/app/(queries)/productsQueries';
@@ -10,7 +10,7 @@ import styles from './ProductList.module.scss';
 const cx = classNames.bind(styles);
 
 const ProductList = () => {
-  const { data } = useSuspenseQuery(getProductsQueryObject());
+  const { data } = useQuery(getProductsQueryObject());
 
   if (!data) {
     return null;

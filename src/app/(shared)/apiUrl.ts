@@ -1,6 +1,9 @@
-// TODO: 추후 sokey 도메인으로 변경 필요
-const SOKEY_DOMAIN = 'http://52.79.97.116:8080';
+const SOKEY_DOMAIN = 'https://api.sokey.kr/api';
 
 export const SOKEY_API_URL = {
+  // query string
+  // - sortBy: newest, oldest, low_price, high_price
+  // - productStatus: not_yet, in_progress, done
+  // - productType: keyboard, kit, switch, keycap, stabilizer, parts
   PRODUCTS: `${SOKEY_DOMAIN}/products`,
 };

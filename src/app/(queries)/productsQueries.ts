@@ -1,14 +1,24 @@
 import ky from 'ky';
 
 import { SOKEY_API_URL } from '@/app/(shared)/apiUrl';
-import { ProductDetailRes, ProductSimilarListRes, ProductsRes } from '@/app/types/api/product';
+import { ProductReq, ProductsDetailRes, ProductsRes, ProductDetailRes, ProductSimilarListRes } from '@/app/types/api/product';
 
-const getProductsQueryKey = () => ['products'];
+const getProductsQueryKey = (params?: ProductReq) => [
+  'products',
+  params?.sortBy,
+  params?.productStatus,
+  params?.productType,
+];
 
-export const getProductsQueryObject = () => {
+export const getProductsQueryObject = (params?: ProductReq) => {
   return {
-    queryKey: getProductsQueryKey(),
-    queryFn: async (): Promise<ProductsRes> => await ky.get(SOKEY_API_URL.PRODUCTS).json(),
+    queryKey: getProductsQueryKey(params),
+    queryFn: async (): Promise<ProductsRes> =>
+      await ky
+        .get(SOKEY_API_URL.PRODUCTS, {
+          searchParams: params,
+        })
+        .json(),
   };
 };
 
