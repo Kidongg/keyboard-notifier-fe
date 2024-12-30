@@ -28,7 +28,7 @@ const SortDropdownSelect = () => {
   const queryClient = useQueryClient();
 
   const fetchProductList = (option: DropdownOption) => {
-    queryClient.fetchQuery(getProductsQueryObject({ sortBy: option.type.toLocaleUpperCase() as SortByEnumType }));
+    queryClient.fetchQuery(getProductsQueryObject({ sortBy: option.type.toLocaleLowerCase() as SortByEnumType }));
   };
 
   return <DropdownSelect options={SORT_OPTIONS} defaultOption={SORT_OPTIONS[0]} onClick={fetchProductList} />;
