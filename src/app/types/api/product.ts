@@ -58,6 +58,10 @@ export type ProductReq = {
   productType?: ProductCategoryEnumType;
 };
 
-export type ProductsDetailRes = {
+export type ProductDetailRes = {
   data: Product;
+};
+
+export type ProductSimilarListRes = {
+  data: any;
 };
