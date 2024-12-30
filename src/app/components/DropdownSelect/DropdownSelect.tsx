@@ -8,13 +8,20 @@ import styles from './DropdownSelect.module.scss';
 
 const cx = classNames.bind(styles);
 
-type ItemsProps = {
-  items: string[];
+export type DropdownOption = {
+  type: string;
+  value: string;
 };
 
-const DropdownSelect = ({ items }: ItemsProps) => {
+type OptionsProps = {
+  options: DropdownOption[];
+  defaultOption?: DropdownOption;
+  onClick: (option: DropdownOption) => void;
+};
+
+const DropdownSelect = ({ options, defaultOption, onClick }: OptionsProps) => {
   const [isOpenDropdown, setIsOpenDropdown] = useState(false);
-  const [clickedItemText, setClickedItemText] = useState(items[0]);
+  const [selectedOption, setSelectedOption] = useState<DropdownOption>(defaultOption || options[0]);
 
   // 버튼 클릭 시 드롭다운으로 팝오버 표시
   const handleOnClickDropdown = () => {
@@ -22,15 +29,16 @@ const DropdownSelect = ({ items }: ItemsProps) => {
   };
 
   // 드롭다운 메뉴 아이템 클릭 시 텍스트 색상 변경
-  const handleOnClickItem = (text: string) => {
-    setClickedItemText(text);
+  const handleOnClickItem = (option: DropdownOption) => {
+    setSelectedOption(option);
     setIsOpenDropdown(false);
+    onClick(option);
   };
 
   return (
     <div className={cx('container')}>
       <div className={cx('button', { is_open_dropdown: isOpenDropdown })} onClick={handleOnClickDropdown}>
-        <span className={cx('button_text')}>{clickedItemText}</span>
+        <span className={cx('button_text')}>{selectedOption.value}</span>
         <img
           src={isOpenDropdown ? '/assets/icons/accordian_fo.png' : '/assets/icons/accordian_en.png'}
           alt={isOpenDropdown ? 'accordian_fo' : 'accordian_en'}
@@ -39,13 +47,13 @@ const DropdownSelect = ({ items }: ItemsProps) => {
         />
       </div>
       <ul className={cx('dropdown', { show: isOpenDropdown, hide: !isOpenDropdown })}>
-        {items.map((item, index) => (
+        {options.map((option, index) => (
           <li
-            className={cx('dropdown_item', { dropdown_item_is_clicked: item === clickedItemText })}
-            onClick={() => handleOnClickItem(item)}
+            className={cx('dropdown_item', { dropdown_item_is_clicked: option.type === selectedOption.type })}
+            onClick={() => handleOnClickItem(option)}
             key={index}
           >
-            {item}
+            {option.value}
           </li>
         ))}
       </ul>

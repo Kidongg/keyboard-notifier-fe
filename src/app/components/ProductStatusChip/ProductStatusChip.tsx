@@ -1,14 +1,14 @@
 import classNames from 'classnames/bind';
 
 import { PRODUCT_STATUS_NAME } from '@/app/(shared)/constants';
-import { ProductStatusEnum, ProductStatusType } from '@/app/types/api/product';
+import { ProductStatusEnum, ProductStatusEnumType } from '@/app/types/api/product';
 
 import styles from './ProductStatusChip.module.scss';
 
 const cx = classNames.bind(styles);
 
 type ProductStatusChipProps = {
-  status: ProductStatusType;
+  status: ProductStatusEnumType;
 };
 
 const ProductStatusChip = ({ status }: ProductStatusChipProps) => {
