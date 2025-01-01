@@ -1,6 +1,7 @@
 import classNames from 'classnames/bind';
 
-import { PRODUCT_STATUS_NAME, ProductStatusEnum, ProductStatusEnumType } from '@/app/types/api/product';
+import { PRODUCT_STATUS_NAME } from '@/app/(shared)/constants';
+import { ProductStatusEnum, ProductStatusEnumType } from '@/app/types/api/product';
 
 import styles from './ProductStatusChip.module.scss';
 
