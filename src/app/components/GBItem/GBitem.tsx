@@ -1,3 +1,5 @@
+import { useRouter } from 'next/navigation';
+
 import classNames from 'classnames/bind';
 
 import ProductCategoryTypeChip from '@/app/(detail)/components/ProductCategoryTypeChip';
@@ -18,14 +20,16 @@ type GBItemProps = {
   startDate: string;
   endDate: string;
   imageUrl: string[];
-  productUrl: string;
   status: ProductStatusEnumType;
   categoryType: ProductCategoryEnumType;
+  id: number;
 };
 
-const GBItem = ({ name, price, unit, startDate, endDate, imageUrl, productUrl, status, categoryType }: GBItemProps) => {
-  const moveToDetailPage = () => {
-    window.open(productUrl, '_blank', 'noopener noreferrer');
+const GBItem = ({ name, price, unit, startDate, endDate, imageUrl, status, categoryType, id }: GBItemProps) => {
+  const router = useRouter();
+
+  const moveToDetailPage = (id: number) => {
+    router.push(`/${id}`);
   };
 
   return (
@@ -35,7 +39,7 @@ const GBItem = ({ name, price, unit, startDate, endDate, imageUrl, productUrl, s
       style={{
         backgroundImage: `url(${imageUrl[0]})`,
       }}
-      onClick={moveToDetailPage}
+      onClick={() => moveToDetailPage(id)}
     >
       <div className={cx('chip-wrap')}>
         <ProductStatusChip status={status} />
