@@ -63,5 +63,5 @@ export type ProductDetailRes = {
 };
 
 export type ProductSimilarListRes = {
-  data: any;
+  data: Product[];
 };
