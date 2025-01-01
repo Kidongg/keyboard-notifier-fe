@@ -8,15 +8,15 @@ import NotificationSubscribeButton from '@/app/(detail)/components/NotificationS
 import ProductCategoryTypeChip from '@/app/(detail)/components/ProductCategoryTypeChip';
 import { formatDate } from '@/app/(shared)/utils/date';
 import { formatPrice } from '@/app/(shared)/utils/price';
-import { ProductCategoryType, ProductStatusType } from '@/app/types/api/product';
+import { ProductCategoryEnumType, ProductStatusEnumType } from '@/app/types/api/product';
 
 import styles from './GBItemInformation.module.scss';
 
 const cx = classNames.bind(styles);
 
 type GBItemInformationProps = {
-  status: ProductStatusType;
-  categoryType: ProductCategoryType;
+  status: ProductStatusEnumType;
+  categoryType: ProductCategoryEnumType;
   name: string;
   price: number;
   unit: string;
