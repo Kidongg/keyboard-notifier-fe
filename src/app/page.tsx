@@ -1,19 +1,34 @@
+import { Suspense } from 'react';
+
+import { dehydrate, HydrationBoundary } from '@tanstack/react-query';
 import classNames from 'classnames/bind';
 
-import CategoryTabs from '@/app/components/CategoryTabs';
-import GBItemListHeader from '@/app/components/GBItemListHeader/GBItemListHeader';
-import ProductListContainer from '@/app/containers/ProductListContainer';
+import { getQueryClient } from '@/app/(configs)/query/config';
+import { getProductsQueryObject } from '@/app/(queries)/productsQueries';
+import ProductMain from '@/app/components/ProductMain/ProductMain';
 
 import styles from './page.module.scss';
 
 const cx = classNames.bind(styles);
 
-export default function Home() {
+export default async function Home() {
+  const queryClient = getQueryClient();
+
+  try {
+    await queryClient.prefetchQuery(getProductsQueryObject());
+  } catch (error) {
+    console.error(error);
+  }
+
+  const dehydratedState = dehydrate(queryClient);
+
   return (
-    <main className={cx('main')}>
-      <CategoryTabs />
-      <GBItemListHeader />
-      <ProductListContainer />
-    </main>
+    <HydrationBoundary state={dehydratedState}>
+      <Suspense fallback={null}>
+        <main className={cx('main')}>
+          <ProductMain />
+        </main>
+      </Suspense>
+    </HydrationBoundary>
   );
 }

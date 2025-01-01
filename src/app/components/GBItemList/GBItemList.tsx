@@ -1,24 +1,25 @@
 'use client';
-import { useQuery } from '@tanstack/react-query';
 import classNames from 'classnames/bind';
 
-import { getProductsQueryObject } from '@/app/(queries)/productsQueries';
 import GBItem from '@/app/components/GBItem';
+import { Product } from '@/app/types/api/product';
 
-import styles from './ProductList.module.scss';
+import styles from './GBItemList.module.scss';
 
 const cx = classNames.bind(styles);
 
-const ProductList = () => {
-  const { data } = useQuery(getProductsQueryObject());
+type GBItemListProps = {
+  productList?: Product[];
+};
 
-  if (!data) {
+const GBItemList = ({ productList }: GBItemListProps) => {
+  if (!productList) {
     return null;
   }
 
   return (
     <ul className={cx('list-container')}>
-      {data.data.content.map((product, index) => (
+      {productList.map((product, index) => (
         <GBItem
           key={index}
           name={product.name}
@@ -27,13 +28,13 @@ const ProductList = () => {
           startDate={product.startDate}
           endDate={product.endDate}
           imageUrl={product.imageUrl}
-          productUrl={product.productUrl}
           status={product.productStatus}
           categoryType={product.productType}
+          id={product.id}
         />
       ))}
     </ul>
   );
 };
 
-export default ProductList;
+export default GBItemList;

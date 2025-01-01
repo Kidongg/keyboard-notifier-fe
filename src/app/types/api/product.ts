@@ -10,12 +10,14 @@ export const ProductStatusEnum = {
 export type ProductStatusEnumType = ValueOf<typeof ProductStatusEnum>;
 
 export const ProductCategoryTypeEnum = {
+  ALL: 'ALL',
   KIT: 'KIT',
   KEYBOARD: 'KEYBOARD',
   SWITCH: 'SWITCH',
-  KEY_CAP: 'KEY_CAP',
+  KEY_CAP: 'KEYCAP',
   STABILIZER: 'STABILIZER',
   PARTS: 'PARTS',
+  ETC: 'ETC',
 } as const;
 
 export type ProductCategoryEnumType = ValueOf<typeof ProductCategoryTypeEnum>;
@@ -63,5 +65,5 @@ export type ProductDetailRes = {
 };
 
 export type ProductSimilarListRes = {
-  data: any;
+  data: Product[];
 };

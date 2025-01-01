@@ -13,7 +13,7 @@ const GBItemListHeader = () => {
 
   const onClickMoreButton = () => {
     // 이전 페이지로 이동
-    router.back();
+    router.push('/');
   };
 
   return (
