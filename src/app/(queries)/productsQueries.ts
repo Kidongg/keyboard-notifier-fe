@@ -1,7 +1,13 @@
 import ky from 'ky';
 
 import { SOKEY_API_URL } from '@/app/(shared)/apiUrl';
-import { ProductDetailRes, ProductReq, ProductSimilarListRes, ProductsRes } from '@/app/types/api/product';
+import {
+  ProductDetailRes,
+  ProductReq,
+  ProductSimilarListRes,
+  ProductsRes,
+  ProductStatusEnum,
+} from '@/app/types/api/product';
 
 const getProductsQueryKey = (params?: ProductReq) => [
   'products',
@@ -16,7 +22,19 @@ export const getProductsQueryObject = (params?: ProductReq) => {
     queryFn: async (): Promise<ProductsRes> =>
       await ky
         .get(SOKEY_API_URL.PRODUCTS, {
-          searchParams: params,
+          searchParams: new URLSearchParams({
+            ...(params?.productStatus === ProductStatusEnum.ALL
+              ? {}
+              : {
+                  productStatus: params?.productStatus,
+                }),
+            ...(params?.productType === ProductStatusEnum.ALL
+              ? {}
+              : {
+                  productType: params?.productType,
+                }),
+            sortBy: params?.sortBy || '',
+          }),
         })
         .json(),
   };

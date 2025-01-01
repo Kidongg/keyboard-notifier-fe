@@ -1,48 +1,31 @@
 'use client';
-import React, { useState } from 'react';
+import React from 'react';
 
 import classNames from 'classnames/bind';
+
+import { ProductCategoryOptionsType } from '@/app/(shared)/constants';
 
 import styles from './CategoryTabs.module.scss';
 
 const cx = classNames.bind(styles);
 
-type cagegoryOption = {
-  label: string;
-  selected: boolean;
+type CategoryTabsProps = {
+  selectedOption: ProductCategoryOptionsType;
+  options: ProductCategoryOptionsType[];
+  onClick: (category: ProductCategoryOptionsType) => void;
 };
 
-// API 연동 전 임시 데이터
-const cagegoryOptions: cagegoryOption[] = [
-  { label: '전체', selected: true },
-  { label: '키트', selected: false },
-  { label: '키보드', selected: false },
-  { label: '스위치', selected: false },
-  { label: '키캡', selected: false },
-  { label: '스테빌라이저', selected: false },
-];
-
-const CategoryTabs = () => {
-  const [options, setOptions] = useState(cagegoryOptions);
-
-  const handleSelect = (index: number) => {
-    const newOptions = options.map((option, i) => ({
-      ...option,
-      selected: i === index,
-    }));
-    setOptions(newOptions);
-  };
-
+const CategoryTabs = ({ selectedOption, options, onClick }: CategoryTabsProps) => {
   return (
     <div className={cx('container')}>
       <ul className={cx('category-tabs')}>
-        {options.map((option, index) => (
+        {options.map((option) => (
           <li
-            key={option.label}
+            key={option.type + option.label}
             className={cx('tab', {
-              selected: option.selected,
+              selected: selectedOption.type === option.type,
             })}
-            onClick={() => handleSelect(index)}
+            onClick={() => onClick(option)}
           >
             <span>{option.label}</span>
           </li>
