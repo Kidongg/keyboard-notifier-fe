@@ -27,9 +27,9 @@ const ProductList = () => {
           startDate={product.startDate}
           endDate={product.endDate}
           imageUrl={product.imageUrl}
-          productUrl={product.productUrl}
           status={product.productStatus}
           categoryType={product.productType}
+          id={product.id}
         />
       ))}
     </ul>
