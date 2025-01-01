@@ -1,14 +1,14 @@
 import classNames from 'classnames/bind';
 
 import { PRODUCT_CATEGORY_NAME } from '@/app/(shared)/constants';
-import { ProductCategoryType } from '@/app/types/api/product';
+import { ProductCategoryEnumType } from '@/app/types/api/product';
 
 import styles from './ProductCategoryTypeChip.module.scss';
 
 const cx = classNames.bind(styles);
 
 type ProductCategoryTypeChipProps = {
-  categoryType: ProductCategoryType;
+  categoryType: ProductCategoryEnumType;
 };
 
 const ProductCategoryTypeChip = ({ categoryType }: ProductCategoryTypeChipProps) => {
