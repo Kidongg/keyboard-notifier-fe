@@ -5,7 +5,7 @@ import { formatDate } from '@/app/(shared)/utils/date';
 import { formatPrice } from '@/app/(shared)/utils/price';
 import Notification from '@/app/components/Notification';
 import ProductStatusChip from '@/app/components/ProductStatusChip';
-import { ProductCategoryType, ProductStatusType } from '@/app/types/api/product';
+import { ProductCategoryEnumType, ProductStatusEnumType } from '@/app/types/api/product';
 
 import styles from './GBitem.module.scss';
 
@@ -19,8 +19,8 @@ type GBItemProps = {
   endDate: string;
   imageUrl: string[];
   productUrl: string;
-  status: ProductStatusType;
-  categoryType: ProductCategoryType;
+  status: ProductStatusEnumType;
+  categoryType: ProductCategoryEnumType;
 };
 
 const GBItem = ({ name, price, unit, startDate, endDate, imageUrl, productUrl, status, categoryType }: GBItemProps) => {
