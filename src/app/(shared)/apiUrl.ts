@@ -6,4 +6,5 @@ export const SOKEY_API_URL = {
   // - productStatus: not_yet, in_progress, done
   // - productType: keyboard, kit, switch, keycap, stabilizer, parts
   PRODUCTS: `${SOKEY_DOMAIN}/products`,
+  ALARM: `${SOKEY_DOMAIN}/alarm`,
 };
