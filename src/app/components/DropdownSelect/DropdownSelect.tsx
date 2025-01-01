@@ -8,20 +8,19 @@ import styles from './DropdownSelect.module.scss';
 
 const cx = classNames.bind(styles);
 
-export type DropdownOption = {
+type DropdownOption = {
   type: string;
-  value: string;
+  label: string;
 };
 
-type OptionsProps = {
-  options: DropdownOption[];
-  defaultOption?: DropdownOption;
-  onClick: (option: DropdownOption) => void;
+type OptionsProps<T> = {
+  selectedOption: T;
+  options: T[];
+  onClick: (option: T) => void;
 };
 
-const DropdownSelect = ({ options, defaultOption, onClick }: OptionsProps) => {
+const DropdownSelect = <T extends DropdownOption>({ selectedOption, options, onClick }: OptionsProps<T>) => {
   const [isOpenDropdown, setIsOpenDropdown] = useState(false);
-  const [selectedOption, setSelectedOption] = useState<DropdownOption>(defaultOption || options[0]);
 
   // 버튼 클릭 시 드롭다운으로 팝오버 표시
   const handleOnClickDropdown = () => {
@@ -29,8 +28,7 @@ const DropdownSelect = ({ options, defaultOption, onClick }: OptionsProps) => {
   };
 
   // 드롭다운 메뉴 아이템 클릭 시 텍스트 색상 변경
-  const handleOnClickItem = (option: DropdownOption) => {
-    setSelectedOption(option);
+  const handleOnClickItem = (option: T) => {
     setIsOpenDropdown(false);
     onClick(option);
   };
@@ -38,7 +36,7 @@ const DropdownSelect = ({ options, defaultOption, onClick }: OptionsProps) => {
   return (
     <div className={cx('container')}>
       <div className={cx('button', { is_open_dropdown: isOpenDropdown })} onClick={handleOnClickDropdown}>
-        <span className={cx('button_text')}>{selectedOption.value}</span>
+        <span className={cx('button_text')}>{selectedOption?.label}</span>
         <img
           src={isOpenDropdown ? '/assets/icons/accordian_fo.png' : '/assets/icons/accordian_en.png'}
           alt={isOpenDropdown ? 'accordian_fo' : 'accordian_en'}
@@ -53,7 +51,7 @@ const DropdownSelect = ({ options, defaultOption, onClick }: OptionsProps) => {
             onClick={() => handleOnClickItem(option)}
             key={index}
           >
-            {option.value}
+            {option.label}
           </li>
         ))}
       </ul>
