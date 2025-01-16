@@ -11,19 +11,31 @@
   z-index: 1;
   display: flex;
   width: 100%;
+
+  @include mobile {
+    padding-left: 20px;
+  }
 }
 
 .category-tabs {
   display: flex;
   background-color: $gray-80;
-  border-radius: 8px;
   box-shadow:
     0px -3px 8px 0px rgba(0, 0, 0, 0.08),
     0px 6px 10px 4px rgba(0, 0, 0, 0.1),
     0px 2px 3px 0px rgba(0, 0, 0, 0.18);
+  border-radius: 8px;
 
   @include mobile {
     background-color: transparent;
+    width: 100%;
+    overflow-x: scroll;
+    scrollbar-width: none;
+    border-radius: 0px;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
   }
 }
 
@@ -33,10 +45,11 @@
   display: flex;
   align-items: center;
   background-color: #2c2c2c;
-  border-radius: 6px;
+  border-radius: 8px;
   cursor: pointer;
   color: #d1d1d1;
   transition: background-color 0.3s;
+  flex: 0 0 auto;
 
   &.selected {
     background-color: $gray-50;
@@ -45,6 +58,18 @@
 
   img {
     margin-right: 8px;
+    width: 28px;
+    height: 28px;
+
+    @include tablet {
+      width: 16px;
+      height: 16px;
+    }
+
+    @include mobile {
+      width: 16px;
+      height: 16px;
+    }
   }
 
   button {
