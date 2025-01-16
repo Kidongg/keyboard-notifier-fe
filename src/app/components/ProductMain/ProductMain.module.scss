@@ -1,13 +1,30 @@
+@import '@/styles/mixins.scss';
+
 .container {
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
+  max-width: 1128px;
+  width: 100%;
+}
+
+.product-wrap {
+  width: 100%;
+
+  @include tablet {
+    padding: 0 20px;
+  }
+
+  @include mobile {
+    padding: 0 20px;
+  }
 }
 
 .product-header {
   display: flex;
   width: 100%;
+  padding: 10px 12px;
 
   div:first-child {
     flex: 1;

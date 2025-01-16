@@ -59,16 +59,18 @@ const ProductMain = () => {
         options={PRODUCT_CATEGORY_OPTIONS}
         onClick={handleProductCategoryOptions}
       />
-      <div className={cx('product-header')}>
-        <GBItemCount count={productList?.length} />
-        <DropdownSelect
-          selectedOption={productStatusOption}
-          options={PRODUCT_STATUS_OPTIONS}
-          onClick={handleProductStatusOptions}
-        />
-        <DropdownSelect selectedOption={filterOption} options={FILTER_OPTIONS} onClick={handleFilterOptions} />
+      <div className={cx('product-wrap')}>
+        <div className={cx('product-header')}>
+          <GBItemCount count={productList?.length} />
+          <DropdownSelect
+            selectedOption={productStatusOption}
+            options={PRODUCT_STATUS_OPTIONS}
+            onClick={handleProductStatusOptions}
+          />
+          <DropdownSelect selectedOption={filterOption} options={FILTER_OPTIONS} onClick={handleFilterOptions} />
+        </div>
+        <GBItemList productList={productList} />
       </div>
-      <GBItemList productList={productList} />
     </div>
   );
 };
