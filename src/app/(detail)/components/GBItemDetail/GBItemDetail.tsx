@@ -1,5 +1,7 @@
 'use client';
 
+import { useEffect } from 'react';
+
 import { usePathname } from 'next/navigation';
 
 import { useSuspenseQuery } from '@tanstack/react-query';
@@ -9,14 +11,21 @@ import GBItemCarousel from '@/app/(detail)/components/GBItemCarousel';
 import GBItemInformation from '@/app/(detail)/components/GBItemInformation';
 import { getProductsDetailQueryObject } from '@/app/(queries)/productsQueries';
 
+import useProductId from '../../store/useProductIdStore';
+
 import styles from './GBItemDetail.module.scss';
 
 const cx = classNames.bind(styles);
 
 const GBItemDetail = () => {
   const pathname = usePathname();
+  const { setProductId } = useProductId();
 
   const { data } = useSuspenseQuery(getProductsDetailQueryObject(pathname.replace('/', '')));
+
+  useEffect(() => {
+    setProductId(pathname.replace('/', ''));
+  }, []);
 
   if (!data) {
     return null;
