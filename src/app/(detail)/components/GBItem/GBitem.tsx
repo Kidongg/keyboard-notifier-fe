@@ -6,8 +6,6 @@ import ProductStatusChip from '@/app/(detail)/components/GBItemStatusChip/Produc
 import ProductCategoryTypeChip from '@/app/(detail)/components/ProductCategoryTypeChip';
 import { formatDate } from '@/app/(shared)/utils/date';
 import { formatPrice } from '@/app/(shared)/utils/price';
-import { useProductCategoryOption } from '@/app/store/useProductCategoryOption';
-import { useProductStatusOption } from '@/app/store/useProductStatusOption';
 import { ProductCategoryEnumType, ProductStatusEnumType } from '@/app/types/api/product';
 
 import styles from './GBitem.module.scss';
@@ -26,36 +24,11 @@ type GBItemProps = {
   id: number;
 };
 
-const mappingStatusLabel = (type: ProductStatusEnumType) => {
-  const statusLabels: Record<ProductStatusEnumType, string> = {
-    ALL: '전체',
-    NOT_YET: '진행예정',
-    IN_PROGRESS: '진행중',
-    DONE: '공제완료',
-  };
-
-  return statusLabels[type];
-};
-
 const GBItem = ({ name, price, unit, startDate, endDate, imageUrl, status, categoryType, id }: GBItemProps) => {
-  const { productCategoryOption, setProductCategoryOption } = useProductCategoryOption();
-  const { productStatusOption, setProductStatusOption } = useProductStatusOption();
-
   const router = useRouter();
 
   const moveToDetailPage = (id: number) => {
     router.push(`/${id}`);
-
-    setProductCategoryOption({
-      ...productCategoryOption,
-      type: categoryType,
-    });
-
-    setProductStatusOption({
-      ...productStatusOption,
-      type: status,
-      label: mappingStatusLabel(status),
-    });
   };
 
   return (
