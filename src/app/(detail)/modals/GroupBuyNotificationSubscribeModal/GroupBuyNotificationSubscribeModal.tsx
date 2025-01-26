@@ -8,7 +8,7 @@ import CheckBox from '@/app/(detail)/components/CheckBox';
 import useGroupByNotificationSubscribeModal from '@/app/(detail)/hooks/useGroupByNotificationSubscribeModal';
 import { SOKEY_API } from '@/app/(shared)/apiUrl';
 import { isValidEmail } from '@/app/(shared)/utils/isValidEmail';
-import { useModalStore } from '@/app/store/modalStore';
+import { useModalStore } from '@/app/store/useModalStore';
 
 import useProductId from '../../store/useProductIdStore';
 

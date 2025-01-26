@@ -2,7 +2,7 @@
 
 import classNames from 'classnames/bind';
 
-import { useModalStore } from '@/app/store/modalStore';
+import { useModalStore } from '@/app/store/useModalStore';
 
 import styles from './NotificationSubscribeButton.module.scss';
 
