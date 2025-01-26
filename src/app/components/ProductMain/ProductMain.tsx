@@ -19,6 +19,7 @@ import DropdownSelect from '@/app/components/DropdownSelect';
 import GBItemCount from '@/app/components/GBItemCount/GBItemCount';
 import GBItemList from '@/app/components/GBItemList';
 import { useProductCategoryOption } from '@/app/store/useProductCategoryOption';
+import { useProductStatusOption } from '@/app/store/useProductStatusOption';
 
 import styles from './ProductMain.module.scss';
 
@@ -26,7 +27,7 @@ const cx = classNames.bind(styles);
 
 const ProductMain = () => {
   const { productCategoryOption, setProductCategoryOption } = useProductCategoryOption();
-  const [productStatusOption, setProductStatusOption] = useState<ProductStatusOptionsType>(PRODUCT_STATUS_OPTIONS[0]);
+  const { productStatusOption, setProductStatusOption } = useProductStatusOption();
   const [filterOption, setFilterOption] = useState<FilterOptionsType>(FILTER_OPTIONS[0]);
 
   const { data } = useQuery(
