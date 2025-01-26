@@ -15,7 +15,7 @@ const mappingStatusLabel = (type: ProductStatusEnumType) => {
   return statusLabels[type];
 };
 
-export const useUpdateProductOptions = (status: ProductStatusEnumType, categoryType: ProductCategoryEnumType) => {
+const useUpdateProductOptions = (status: ProductStatusEnumType, categoryType: ProductCategoryEnumType) => {
   const { productCategoryOption, setProductCategoryOption } = useProductCategoryOption();
   const { productStatusOption, setProductStatusOption } = useProductStatusOption();
 
@@ -32,3 +32,5 @@ export const useUpdateProductOptions = (status: ProductStatusEnumType, categoryT
     });
   }, [status, categoryType]);
 };
+
+export default useUpdateProductOptions;
