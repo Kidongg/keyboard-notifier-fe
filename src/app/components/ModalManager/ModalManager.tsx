@@ -5,7 +5,7 @@ import classNames from 'classnames/bind';
 
 import GroupBuyNotificationSubscribeModal from '@/app/(detail)/modals/GroupBuyNotificationSubscribeModal';
 import SuccessNotificationAlertModal from '@/app/(detail)/modals/SuccessNotificationAlertModal';
-import { useModalStore } from '@/app/store/modalStore';
+import { useModalStore } from '@/app/store/useModalStore';
 
 import styles from './ModalManager.module.scss';
 

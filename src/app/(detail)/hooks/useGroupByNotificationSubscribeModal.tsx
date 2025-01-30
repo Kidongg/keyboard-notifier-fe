@@ -1,25 +1,7 @@
 import { RefObject, useState } from 'react';
 
-const useGroupByNotificationSubscribeModal = (
-  phoneInputRef: RefObject<HTMLInputElement>,
-  emailInputRef: RefObject<HTMLInputElement>,
-) => {
-  const [phoneNumber, setPhoneNumber] = useState('');
-  const [checkedPhone, setCheckedPhone] = useState(false);
+const useGroupByNotificationSubscribeModal = (emailInputRef: RefObject<HTMLInputElement>) => {
   const [checkedEmail, setCheckedEmail] = useState(false);
-
-  const onClickDisabledPhoneCheckbox = () => {
-    setCheckedPhone(true);
-    phoneInputRef.current?.focus();
-  };
-
-  const onClickEnabledPhoneCheckbox = () => {
-    setCheckedPhone(false);
-    if (phoneInputRef.current) {
-      setPhoneNumber('');
-      phoneInputRef.current.value = '';
-    }
-  };
 
   const onClickDisabledEmailCheckbox = () => {
     setCheckedEmail(true);
@@ -34,14 +16,8 @@ const useGroupByNotificationSubscribeModal = (
   };
 
   return {
-    phoneNumber,
-    setPhoneNumber,
-    checkedPhone,
-    setCheckedPhone,
     checkedEmail,
     setCheckedEmail,
-    onClickDisabledPhoneCheckbox,
-    onClickEnabledPhoneCheckbox,
     onClickDisabledEmailCheckbox,
     onClickEnabledEmailCheckbox,
   };

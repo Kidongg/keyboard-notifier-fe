@@ -6,42 +6,32 @@ import ky from 'ky';
 
 import CheckBox from '@/app/(detail)/components/CheckBox';
 import useGroupByNotificationSubscribeModal from '@/app/(detail)/hooks/useGroupByNotificationSubscribeModal';
-import { SOKEY_API_URL } from '@/app/(shared)/apiUrl';
-import { formatPhoneNumber } from '@/app/(shared)/utils/formatPhoneNumber';
+import { SOKEY_API } from '@/app/(shared)/apiUrl';
 import { isValidEmail } from '@/app/(shared)/utils/isValidEmail';
-import { isValidPhoneNumber } from '@/app/(shared)/utils/isValidPhoneNumber';
-import { useModalStore } from '@/app/store/modalStore';
+import { useModalStore } from '@/app/store/useModalStore';
+
+import useProductId from '../../store/useProductIdStore';
 
 import styles from './GroupBuyNotificationSubscribeModal.module.scss';
 
 const cx = classNames.bind(styles);
 
 const GroupBuyNotificationSubscribeModal = () => {
-  const phoneInputRef = useRef<HTMLInputElement | null>(null);
   const emailInputRef = useRef<HTMLInputElement | null>(null);
 
-  const {
-    phoneNumber,
-    setPhoneNumber,
-    checkedPhone,
-    setCheckedPhone,
-    onClickEnabledPhoneCheckbox,
-    onClickDisabledPhoneCheckbox,
-    checkedEmail,
-    setCheckedEmail,
-    onClickEnabledEmailCheckbox,
-    onClickDisabledEmailCheckbox,
-  } = useGroupByNotificationSubscribeModal(phoneInputRef, emailInputRef);
+  const { checkedEmail, setCheckedEmail, onClickEnabledEmailCheckbox, onClickDisabledEmailCheckbox } =
+    useGroupByNotificationSubscribeModal(emailInputRef);
 
   const { openModal, closeModal } = useModalStore();
 
+  const { productId } = useProductId();
+
   // 공제 알림 신청 뮤테이션
-  const { mutate: notificationRequestMutate } = useMutation<void, Error, { phone?: string; email?: string }>({
-    mutationFn: ({ phone, email }) => {
+  const { mutate: notificationRequestMutate } = useMutation<void, Error, { email?: string }>({
+    mutationFn: ({ email }) => {
       return ky
-        .post(`${SOKEY_API_URL.ALARM}`, {
+        .post(`${SOKEY_API}/${productId}/alarm`, {
           json: {
-            phone: phone,
             email: email,
           },
         })
@@ -60,28 +50,17 @@ const GroupBuyNotificationSubscribeModal = () => {
     closeModal();
   };
 
-  // 연락처 입력시 데이터 변환시키기
-  const handleChangePhoneNumber = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const formattedNumber = formatPhoneNumber(e.target.value);
-    setPhoneNumber(formattedNumber);
-  };
-
   // 알림 신청 버튼 클릭
   const onClickNotificationRequest = () => {
-    const phone = phoneInputRef.current?.value || undefined;
     const email = emailInputRef.current?.value || undefined;
 
     // 입력된 값이 있을 경우 각각의 형식이 올바른지 검증
-    const isPhoneValid = phone ? isValidPhoneNumber(phone) : false;
     const isEmailValid = email ? isValidEmail(email) : false;
 
     // 검증된 전화번호와 이메일 중 하나만 입력되었다면 뮤테이션 실행
-    if ((phone && isPhoneValid) || (email && isEmailValid)) {
-      notificationRequestMutate({ phone, email });
+    if (email && isEmailValid) {
+      notificationRequestMutate({ email });
     } else {
-      if (phone && !isPhoneValid) {
-        alert('전화번호를 형식에 맞게 입력해주세요.');
-      }
       if (email && !isEmailValid) {
         alert('이메일을 형식에 맞게 입력해주세요.');
       }
@@ -103,26 +82,6 @@ const GroupBuyNotificationSubscribeModal = () => {
         <div className={cx('content-box')}>
           <div className={cx('label-box')}>
             <CheckBox
-              checked={checkedPhone}
-              onClick={checkedPhone ? onClickEnabledPhoneCheckbox : onClickDisabledPhoneCheckbox}
-              alt="checkbox-phone"
-            />
-            <label className={cx('label')}>연락처</label>
-          </div>
-          <input
-            className={cx('input')}
-            ref={phoneInputRef}
-            onFocus={() => setCheckedPhone(true)}
-            value={phoneNumber}
-            onChange={handleChangePhoneNumber}
-            maxLength={13}
-            placeholder="010-1234-5678"
-            type="tel"
-          />
-        </div>
-        <div className={cx('content-box')}>
-          <div className={cx('label-box')}>
-            <CheckBox
               checked={checkedEmail}
               onClick={checkedEmail ? onClickEnabledEmailCheckbox : onClickDisabledEmailCheckbox}
               alt="checkbox-email"
@@ -140,8 +99,8 @@ const GroupBuyNotificationSubscribeModal = () => {
       </div>
       <div className={cx('modal-footer')}>
         <button
-          className={cx(checkedPhone || checkedEmail ? 'button-enabled' : 'button-disabled')}
-          disabled={!checkedPhone && !checkedEmail}
+          className={cx(checkedEmail ? 'button-enabled' : 'button-disabled')}
+          disabled={!checkedEmail}
           onClick={onClickNotificationRequest}
         >
           알림 신청 완료
