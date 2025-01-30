@@ -33,7 +33,7 @@ const GBItem = ({ name, price, unit, startDate, endDate, imageUrl, status, categ
 
   return (
     <li
-      className={cx('list')}
+      className={cx('item')}
       role="button"
       style={{
         backgroundImage: `url(${imageUrl[0]})`,

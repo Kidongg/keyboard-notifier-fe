@@ -1,11 +1,11 @@
 @import '@/styles/variables.scss';
 
-.list {
+.item {
   background-image: url('/assets/images/gb-thumbnail.png');
   background-size: cover;
   padding: 20px;
   border-radius: 12px;
-  width: 320px;
+  width: 360px;
   height: 252px;
   display: flex;
   flex-direction: column;
@@ -16,7 +16,6 @@
 
 .badge-wrap {
   display: flex;
-  gap: 6px;
 }
 
 .content-wrap {
