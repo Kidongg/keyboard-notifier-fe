@@ -1,0 +1,32 @@
+@import '@/styles/mixins.scss';
+@import '@/styles/variables.scss';
+
+.scroll-to-top {
+  padding: 12px;
+  background-color: $gray-70;
+  outline: none;
+  border: none;
+  border-radius: 8px;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+
+  @include tablet {
+    right: 60px;
+    bottom: 60px;
+  }
+
+  @include mobile {
+    right: 32px;
+    bottom: 60px;
+  }
+
+  &:hover {
+    opacity: 1;
+  }
+
+  img {
+    width: 24px;
+    height: 24px;
+  }
+}

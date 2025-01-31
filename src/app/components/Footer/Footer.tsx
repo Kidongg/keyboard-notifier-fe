@@ -9,7 +9,9 @@ const Footer = () => {
     <footer className={cx('footer')}>
       <div className={cx('container')}>
         <span className={cx('service-name')}>@ D2D</span>
-        <span className={cx('channel')}>Contact US</span>
+        <a className={cx('channel')} target="_blank" href="https://forms.gle/k9HNS1kkV3RfRCKX6">
+          Contact US
+        </a>
       </div>
     </footer>
   );

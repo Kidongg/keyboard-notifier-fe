@@ -1,3 +1,5 @@
+import { useState } from 'react';
+
 import { useRouter } from 'next/navigation';
 
 import classNames from 'classnames/bind';
@@ -26,6 +28,7 @@ type GBItemProps = {
 };
 
 const GBItem = ({ name, price, unit, startDate, endDate, imageUrl, status, categoryType, id }: GBItemProps) => {
+  const [isHover, setIsHover] = useState(false);
   const router = useRouter();
 
   const moveToDetailPage = (id: number) => {
@@ -34,18 +37,22 @@ const GBItem = ({ name, price, unit, startDate, endDate, imageUrl, status, categ
 
   return (
     <li
-      className={cx('list')}
+      className={cx('list', {
+        hover: isHover,
+      })}
       role="button"
       style={{
         backgroundImage: `url(${imageUrl[0]})`,
       }}
       onClick={() => moveToDetailPage(id)}
+      onMouseOver={() => setIsHover(true)}
+      onMouseLeave={() => setIsHover(false)}
     >
       <div className={cx('chip-wrap')}>
         <ProductStatusChip status={status} />
         <ProductCategoryTypeChip categoryType={categoryType} />
       </div>
-      <div>
+      <div className={cx('info-wrap')}>
         <h3 className={cx('name')}>{name}</h3>
         <div className={cx('price-wrap')}>
           <span className={cx('price')}>{formatPrice(price)}</span>
@@ -53,7 +60,7 @@ const GBItem = ({ name, price, unit, startDate, endDate, imageUrl, status, categ
         </div>
         <p className={cx('date')}>{`${formatDate(startDate)} - ${formatDate(endDate)}`}</p>
       </div>
-      <Notification />
+      {isHover && <Notification />}
     </li>
   );
 };

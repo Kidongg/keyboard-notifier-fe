@@ -1,0 +1,77 @@
+@import '@/styles/mixins.scss';
+
+.slider-container {
+  margin-top: 40px;
+
+  @include tablet {
+    margin: 26px;
+  }
+
+  @include mobile {
+    margin: 20px;
+  }
+}
+
+.container {
+  width: 1128px;
+  height: 420px;
+  > div {
+    border-radius: 16px;
+  }
+
+  @include tablet {
+    width: 100%;
+    height: 332px;
+  }
+
+  @include mobile {
+    width: 100%;
+    height: 216px;
+  }
+}
+
+.banner-img {
+  width: 100%;
+  height: 420px;
+  padding: 40px 24px;
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+
+  @include tablet {
+    height: 332px;
+    padding: 32px 24px;
+  }
+
+  @include mobile {
+    height: 216px;
+    padding: 24px;
+  }
+}
+
+.badge-wrap {
+  margin-bottom: 12px;
+}
+
+.title {
+  font-size: 28px;
+  font-weight: 500;
+  width: 828px;
+  height: 78px;
+
+  @include tablet {
+    width: 679px;
+    height: 78px;
+  }
+
+  @include mobile {
+    width: 272px;
+    height: 52px;
+    font-size: 20px;
+    height: 52px;
+  }
+}

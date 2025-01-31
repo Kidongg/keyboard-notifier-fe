@@ -4,8 +4,6 @@ import classNames from 'classnames/bind';
 import Slider from 'react-slick';
 
 import styles from './GBItemCarousel.module.scss';
-import 'slick-carousel/slick/slick.css';
-import 'slick-carousel/slick/slick-theme.css';
 
 const cx = classNames.bind(styles);
 
