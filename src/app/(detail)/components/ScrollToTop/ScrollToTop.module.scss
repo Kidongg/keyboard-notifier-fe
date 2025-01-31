@@ -11,6 +11,16 @@
   right: 0;
   bottom: 0;
 
+  @include tablet {
+    right: 60px;
+    bottom: 60px;
+  }
+
+  @include mobile {
+    right: 32px;
+    bottom: 60px;
+  }
+
   &:hover {
     opacity: 1;
   }
