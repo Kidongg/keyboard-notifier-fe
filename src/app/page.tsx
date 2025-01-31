@@ -8,6 +8,8 @@ import { getProductsQueryObject } from '@/app/(queries)/productsQueries';
 import ProductMain from '@/app/components/ProductMain/ProductMain';
 
 import styles from './page.module.scss';
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
 
 const cx = classNames.bind(styles);
 

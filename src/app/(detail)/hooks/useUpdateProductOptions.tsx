@@ -2,7 +2,12 @@ import { useEffect } from 'react';
 
 import { useProductCategoryOption } from '@/app/store/useProductCategoryOption';
 import { useProductStatusOption } from '@/app/store/useProductStatusOption';
-import { ProductCategoryEnumType, ProductStatusEnumType } from '@/app/types/api/product';
+import {
+  ProductCategoryEnumType,
+  ProductCategoryTypeEnum,
+  ProductStatusEnum,
+  ProductStatusEnumType,
+} from '@/app/types/api/product';
 
 const mappingStatusLabel = (type: ProductStatusEnumType) => {
   const statusLabels: Record<ProductStatusEnumType, string> = {
@@ -30,6 +35,18 @@ const useUpdateProductOptions = (status: ProductStatusEnumType, categoryType: Pr
       type: status,
       label: mappingStatusLabel(status),
     });
+
+    return () => {
+      setProductCategoryOption({
+        ...productStatusOption,
+        type: ProductCategoryTypeEnum.ALL,
+      });
+
+      setProductStatusOption({
+        ...productStatusOption,
+        type: ProductStatusEnum.ALL,
+      });
+    };
   }, [status, categoryType]);
 };
 
