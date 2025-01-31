@@ -42,7 +42,7 @@ const ProductMain = () => {
 
   const { data: notYetData } = useQuery(
     getProductsQueryObject({
-      productStatus: ProductStatusEnum.IN_PROGRESS,
+      productStatus: ProductStatusEnum.NOT_YET,
       productType: ProductCategoryTypeEnum.ALL,
       sortBy: SortByEnum.NEWEST,
     }),

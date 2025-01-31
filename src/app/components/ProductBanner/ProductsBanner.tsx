@@ -24,12 +24,12 @@ const ProductsBanner = ({ products }: ProductsBannerProps) => {
     <div className={cx('slider-container')}>
       <Slider
         className={cx('container')}
-        // slidesToShow={1}
+        slidesToShow={1}
         centerMode
         centerPadding="0px"
         speed={500}
-        // autoplay
-        // autoplaySpeed={3000}
+        autoplay
+        autoplaySpeed={3000}
         arrows={false}
       >
         {productList.map((product) => (
