@@ -5,6 +5,7 @@ import { useState } from 'react';
 import { useQuery } from '@tanstack/react-query';
 import classNames from 'classnames/bind';
 
+import ScrollToTop from '@/app/(detail)/components/ScrollToTop';
 import { getProductsQueryObject } from '@/app/(queries)/productsQueries';
 import {
   FILTER_OPTIONS,
@@ -42,7 +43,7 @@ const ProductMain = () => {
 
   const { data: notYetData } = useQuery(
     getProductsQueryObject({
-      productStatus: ProductStatusEnum.NOT_YET,
+      productStatus: ProductStatusEnum.IN_PROGRESS,
       productType: ProductCategoryTypeEnum.ALL,
       sortBy: SortByEnum.NEWEST,
     }),
@@ -83,6 +84,7 @@ const ProductMain = () => {
           </div>
           <GBItemList productList={productList} />
         </div>
+        <ScrollToTop />
       </div>
     </>
   );
