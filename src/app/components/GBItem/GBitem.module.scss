@@ -1,16 +1,28 @@
 @import '@/styles/variables.scss';
 @import '@/styles/mixins.scss';
 
+@keyframes hoverEffect {
+  0% {
+    background-color: rgba(23, 23, 25, 0);
+    backdrop-filter: blur(0px);
+  }
+  100% {
+    background-color: rgba(23, 23, 25, 0.5);
+    backdrop-filter: blur(4px);
+  }
+}
+
 .list {
   background-size: cover;
-  padding: 20px;
   border-radius: 12px;
   height: 252px;
   display: flex;
   flex-direction: column;
   cursor: pointer;
   position: relative;
+
   box-sizing: border-box;
+  overflow: hidden;
 
   @include tablet {
     height: 240px;
@@ -19,11 +31,23 @@
   @include mobile {
     height: 200px;
   }
+
+  &.hover .info-wrap {
+    animation: hoverEffect 0.5s forwards;
+  }
 }
 
 .chip-wrap {
+  padding: 20px;
   flex: 1;
   gap: 6px;
+}
+
+.info-wrap {
+  padding: 20px;
+  background-color: rgba(23, 23, 25, 0);
+  backdrop-filter: blur(0px);
+  transition: all 0.3s ease-in-out;
 }
 
 .name {

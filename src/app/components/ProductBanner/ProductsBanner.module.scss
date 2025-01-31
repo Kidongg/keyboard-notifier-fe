@@ -31,13 +31,16 @@
 }
 
 .banner-img {
-  width: 1128px;
+  width: 100%;
   height: 420px;
   padding: 40px 24px;
   background-size: cover;
   background-position: center center;
   background-repeat: no-repeat;
   position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
 
   @include tablet {
     height: 332px;
@@ -47,21 +50,6 @@
   @include mobile {
     height: 216px;
     padding: 24px;
-  }
-}
-
-.banner-content {
-  position: absolute;
-  bottom: 40px;
-  left: 24px;
-
-  @include tablet {
-    bottom: 32px;
-  }
-
-  @include mobile {
-    left: 16px;
-    bottom: 24px;
   }
 }
 
